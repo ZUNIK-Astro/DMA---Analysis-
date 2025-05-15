@@ -1,0 +1,45 @@
+import streamlit as st
+from datetime import datetime
+
+st.set_page_config(page_title="DMA Game Predictor", layout="centered")
+
+st.title("Deep Mirror Astrology: Game Outcome Analyzer")
+
+st.markdown("**Enter Celestial Data**")
+
+# Game info section
+st.subheader("1. Game Information")
+home_team = st.text_input("Home Team")
+away_team = st.text_input("Away Team")
+game_date = st.date_input("Game Date", datetime.today())
+event_time = st.time_input("Event Time")
+
+# Lords and Hours
+st.subheader("2. Rulerships")
+lod = st.selectbox("Lord of the Day (LOD)", ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn"])
+loh = st.selectbox("Lord of the Hour (LOH)", ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn"])
+
+# Celestial bodies at Event Time
+st.subheader("3. Planetary Positions")
+st.markdown("Enter degrees in format: 29° 07'")
+bodies = ["Sun", "Moon", "Mercury", "Venus", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Pluto"]
+positions = {}
+for body in bodies:
+    positions[body] = st.text_input(f"{body} position", key=body)
+
+# Angle data
+st.subheader("4. Ascendant/Descendant")
+asc = st.text_input("Ascendant", help="e.g., 22° 49' Cancer")
+dsc = st.text_input("Descendant", help="e.g., 22° 49' Capricorn")
+
+# Placeholder for prediction logic
+st.subheader("5. Prediction Engine (Coming Soon)")
+st.info("Celestial dynamics logic under development...")
+
+# Display results
+if st.button("Analyze Chart"):
+    st.success("Data captured! Future updates will generate automated predictions based on dynamic astrological rules.")
+
+# Footer
+st.markdown("---")
+st.caption("Built with Deep Mirror Astrology (DMA) – Celestial motion never sleeps.")
